@@ -31,14 +31,16 @@ public class HomeWork1 {
         int p1 = 0, p2 = 0;
         while (i < N) {
             if (p1 == leftArray.length) { // 왼쪽 다 끝난 경우
-                /* NO - 시간초과
+                /* 통과 했지만 코드가 깔끔하지 않다.
+                
                 // 오른쪽에 남은거 다 옮겨 준다.
                 System.arraycopy(rightArray, p2, newArray, i, N-i);
                 return newArray;
                 */
                 newArray[i++] = rightArray[p2++];
             } else if (p2 == rightArray.length) { // 오른쪽 다 끝난 경우
-                /* NO - 시간초과
+                /* 통과 했지만 코드가 깔끔하지 않다.
+
                 // 왼쪽에 남은거 다 옮겨 준다.
                 System.arraycopy(leftArray, p1, newArray, i, N-i);
                 return newArray;
@@ -64,10 +66,12 @@ public class HomeWork1 {
             inputs[i] = sc.nextInt();
         }
 
+        StringBuffer result = new StringBuffer();
         // 시작과 끝 지정해서 함수 호출 -> for문
         for (int su : function(0, N-1)) {
-            System.out.println(su);
+//            System.out.println(su); -> 시간초과
+            result.append(Integer.toString(su) + "\n");
         }
-//        function(0, N-1);
+        System.out.println(result);
     }
 }
