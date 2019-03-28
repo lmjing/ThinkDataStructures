@@ -1,9 +1,11 @@
 package com.allendowney.thinkdast;
 
-import sun.misc.Timeable;
+import org.jfree.data.xy.XYSeries;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.allendowney.thinkdast.Profiler.Timeable;
 
 public class ProfileListAdd {
 
