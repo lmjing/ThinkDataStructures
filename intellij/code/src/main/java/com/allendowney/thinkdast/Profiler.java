@@ -31,11 +31,13 @@ public class Profiler extends ApplicationFrame {
         /*
          * setup is invoked before the clock starts.
          */
+        // 프로파일링 하기 전 초기화 셋팅 작업 (시작)
         public void setup(int n);
 
         /*
          * timeMe does whatever operation we are timing.
          */
+        // 실행시킬 코드 (걸리는 시간을 구하고자 하는 코드) 작성
         public void timeMe(int n);
     }
 
@@ -105,7 +107,7 @@ public class Profiler extends ApplicationFrame {
      * @param series
      */
     public void plotResults(XYSeries series) {
-        double slope = estimateSlope(series);
+        double slope = estimateSlope(series); // log-log 스케일 적용
         System.out.println("Estimated slope= " + slope);
 
         final XYSeriesCollection dataset = new XYSeriesCollection();
