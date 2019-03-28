@@ -62,7 +62,7 @@ cmake-build-*/
 
 # IntelliJ
 out/
-**/out/
+intellij/code/out/
 
 # mpeltonen/sbt-idea plugin
 .idea_modules/
@@ -124,12 +124,12 @@ hs_err_pid*
 ### Gradle ###
 .gradle
 build/
-**/.gradle
-**/build/
+intellij/code/.gradle
+intellij/code/build/
 
 # Ignore Gradle GUI config
 gradle-app.setting
-**/gradle-app.setting
+intellij/code/gradle-app.setting
 
 # Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
 !gradle-wrapper.jar
