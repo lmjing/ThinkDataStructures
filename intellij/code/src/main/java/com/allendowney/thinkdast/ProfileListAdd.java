@@ -56,7 +56,11 @@ public class ProfileListAdd {
      * 결과
      * add 메소드는 O(1)임
      * 여기서 timeMe는 n개를 추가하니깐 선형으로 O(n^2) = a + bn + cn^2
-     * 근데 그래프는 2를 그리고 있는게 맞나..?
+     *
+     * Question
+     * 근데 그래프는 O(n^2)를 그리고 있는게 맞나..?
+     * A. 맞다. -> 그래프에서 직선이라고 알고리즘이 선형인 것을 의미하지 않음.
+     * 오히려 실행시간이 O(n^k)일 때, 기울기가 k인 직선이 됨.
      */
     public static void profileArrayListAddBeginning() {
         // TODO: FILL THIS IN!
