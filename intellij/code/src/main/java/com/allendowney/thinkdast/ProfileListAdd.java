@@ -13,8 +13,8 @@ public class ProfileListAdd {
      * @param args
      */
     public static void main(String[] args) {
-        profileArrayListAddEnd();
-        //profileArrayListAddBeginning();
+//        profileArrayListAddEnd();
+        profileArrayListAddBeginning();
         //profileLinkedListAddBeginning();
         //profileLinkedListAddEnd();
     }
@@ -50,9 +50,28 @@ public class ProfileListAdd {
 
     /**
      * Characterize the run time of adding to the beginning of an ArrayList
+     * O(N)
      */
     public static void profileArrayListAddBeginning() {
         // TODO: FILL THIS IN!
+        Timeable timeable = new Timeable() {
+            List<String> list;
+
+            @Override
+            public void setup(int n) {
+                list = new ArrayList<String>();
+            }
+
+            @Override
+            public void timeMe(int n) {
+                for (int i=0; i<n; i++) {
+                    list.add(0, "a string");
+                }
+            }
+        };
+        int startN = 4000; // n은 4000 부터 테스트 시작
+        int endMillis = 1000; // 임계치 설정 -> 강제 종료
+        runProfiler("ArrayList add beginning", timeable, startN, endMillis); // 프로파일링 실행
     }
 
     /**
