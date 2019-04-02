@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.allendowney.thinkdast;
 
 import java.awt.Color;
@@ -19,114 +16,112 @@ import org.jfree.data.xy.XYSeriesCollection;
 import org.jfree.ui.ApplicationFrame;
 import org.jfree.ui.RefineryUtilities;
 
-/**
- * @author downey
- *
- */
 public class Profiler extends ApplicationFrame {
 
-	/**
-	 * This is here because extending ApplicationFrame requires it.
-	 */
-	private static final long serialVersionUID = 1L;
+    /**
+     * This is here because extending ApplicationFrame requires it.
+     */
+    private static final long serialVersionUID = 1L;
 
-	/**
-	 * Timeable defines the methods an object must provide to work with Profiler
-	 *
-	 */
-	public interface Timeable {
-		/*
-		 * setup is invoked before the clock starts.
-		 */
-		public void setup(int n);
+    /**
+     * Timeable defines the methods an object must provide to work with Profiler
+     *
+     */
+    public interface Timeable {
+        /*
+         * setup is invoked before the clock starts.
+         */
+        // 프로파일링 하기 전 초기화 셋팅 작업 (시작)
+        public void setup(int n);
 
-		/*
-		 * timeMe does whatever operation we are timing.
-		 */
-		public void timeMe(int n);
-	}
+        /*
+         * timeMe does whatever operation we are timing.
+         */
+        // 실행시킬 코드 (걸리는 시간을 구하고자 하는 코드) 작성
+        public void timeMe(int n);
+    }
 
-	private Timeable timeable;
+    private Timeable timeable;
 
-	public Profiler(String title, Timeable timeable) {
-		super(title);
-		this.timeable = timeable;
-	}
+    public Profiler(String title, Timeable timeable) {
+        super(title);
+        this.timeable = timeable;
+    }
 
-	/**
-	 * Invokes timeIt with a range of `n` from `startN` until runtime exceeds `endMillis`.
-	 *
-	 * @param data.timeable
-	 * @param n
-	 * @return
-	 */
-	public XYSeries timingLoop(int startN, int endMillis) {
+    /**
+     * Invokes timeIt with a range of `n` from `startN` until runtime exceeds `endMillis`.
+     *
+     * @param data.timeable
+     * @param n
+     * @return
+     */
+    public XYSeries timingLoop(int startN, int endMillis) {
         final XYSeries series = new XYSeries("Time (ms)");
 
-		int n = startN;
-		for (int i=0; i<20; i++) {
-			// run it once to warm up
-			timeIt(n);
+        int n = startN;
+        for (int i=0; i<20; i++) {
+            // run it once to warm up
+            timeIt(n);
 
-			// then start timing
-			long total = 0;
+            // then start timing
+            long total = 0;
 
-			// run 10 times and add up total runtime
-			for (int j=0; j<10; j++) {
-				total += timeIt(n);
-			}
-			System.out.println(n + ", " + total);
+            // run 10 times and add up total runtime
+            for (int j=0; j<10; j++) {
+                total += timeIt(n);
+            }
+            System.out.println(n + ", " + total);
 
-			// don't store data until we get to 4ms
-			if (total > 4) {
-				series.add(n, total);
-			}
+            // don't store data until we get to 4ms
+            if (total > 4) {
+                series.add(n, total);
+            }
 
-			// stop when the runtime exceeds the end threshold
-			if (total > endMillis) {
-				break;
-			}
-			// otherwise double the size and continue
-			n *= 2;
-		}
-		return series;
-	}
+            // stop when the runtime exceeds the end threshold
+            if (total > endMillis) {
+                break;
+            }
+            // otherwise double the size and continue
+            n *= 2;
+        }
+        return series;
+    }
 
-	/**
-	 * Invokes setup and timeMe on the embedded Timeable.
-	 *
-	 * @param n
-	 * @return
-	 */
-	public long timeIt(int n) {
-		timeable.setup(n);
-		final long startTime = System.currentTimeMillis();
-		timeable.timeMe(n);
-		final long endTime = System.currentTimeMillis();
-		return endTime - startTime;
-	}
+    /**
+     * Invokes setup and timeMe on the embedded Timeable.
+     *
+     * @param n
+     * @return
+     */
+    public long timeIt(int n) {
+        timeable.setup(n);
+        final long startTime = System.currentTimeMillis();
+        timeable.timeMe(n);
+        final long endTime = System.currentTimeMillis();
+        return endTime - startTime;
+    }
 
-	/**
-	 * Plots the results.
-	 *
-	 * @param series
-	 */
-	public void plotResults(XYSeries series) {
-		double slope = estimateSlope(series);
-		System.out.println("Estimated slope= " + slope);
+    /**
+     * Plots the results.
+     *
+     * @param series
+     */
+    public void plotResults(XYSeries series) {
+        double slope = estimateSlope(series); // log-log 스케일 적용
+        System.out.println("Estimated slope= " + slope);
 
-		final XYSeriesCollection dataset = new XYSeriesCollection();
+        final XYSeriesCollection dataset = new XYSeriesCollection();
         dataset.addSeries(series);
 
         final JFreeChart chart = ChartFactory.createXYLineChart(
-            "",          // chart title
-            "",               // domain axis label
-            "",                  // range axis label
-            dataset,                  // data
-            PlotOrientation.VERTICAL,
-            false,                     // include legend
-            true,
-            false
+                "",          // chart title
+                "",               // domain axis label
+                "",                  // range axis label
+                dataset,                  // data
+                PlotOrientation.VERTICAL,
+                false,                     // include legend
+                true,
+                false
         );
 
         final XYPlot plot = chart.getXYPlot();
@@ -142,21 +137,21 @@ public class Profiler extends ApplicationFrame {
         pack();
         RefineryUtilities.centerFrameOnScreen(this);
         setVisible(true);
-	}
+    }
 
-	/**
-	 * Uses simple regression to estimate the slope of the series.
-	 *
-	 * @param series
-	 * @return
-	 */
-	public double estimateSlope(XYSeries series) {
-		SimpleRegression regression = new SimpleRegression();
+    /**
+     * Uses simple regression to estimate the slope of the series.
+     *
+     * @param series
+     * @return
+     */
+    public double estimateSlope(XYSeries series) {
+        SimpleRegression regression = new SimpleRegression();
 
-		for (Object item: series.getItems()) {
-			XYDataItem xy = (XYDataItem) item;
-			regression.addData(Math.log(xy.getXValue()), Math.log(xy.getYValue()));
-		}
-		return regression.getSlope();
-	}
+        for (Object item: series.getItems()) {
+            XYDataItem xy = (XYDataItem) item;
+            regression.addData(Math.log(xy.getXValue()), Math.log(xy.getYValue()));
+        }
+        return regression.getSlope();
+    }
 }

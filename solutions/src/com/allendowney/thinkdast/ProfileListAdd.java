@@ -6,8 +6,6 @@ import java.util.List;
 
 import org.jfree.data.xy.XYSeries;
 
-import com.allendowney.thinkdast.Profiler.Timeable;
-
 public class ProfileListAdd {
 	
 	/**

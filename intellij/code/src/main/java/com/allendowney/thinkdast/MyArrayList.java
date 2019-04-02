@@ -45,11 +45,28 @@ public class MyArrayList<T> implements List<T> {
 	@Override
 	public boolean add(T element) {
 		// TODO: FILL THIS IN!
-		return false;
+		/*
+		시간 복잡도 : O(1)
+		TODO : 이유 옮겨 적어
+		 */
+
+		// 1. size 넘었을 경우 리사이징 시켜준다.
+		if (size >= array.length) {
+			T[] newArray = (T[]) new Object[size * 2];
+			System.arraycopy(array, 0, newArray, 0, size * 20);
+			array = newArray;
+		}
+
+		// 2. 마지막 위치에 엘리먼트 추가
+		array[size] = element;
+		size++;
+
+		return true;
 	}
 
 	@Override
 	public void add(int index, T element) {
+		// idx 범위 벗어나면 예외처리 실시
 		if (index < 0 || index > size) {
 			throw new IndexOutOfBoundsException();
 		}
@@ -111,6 +128,12 @@ public class MyArrayList<T> implements List<T> {
 	@Override
 	public int indexOf(Object target) {
 		// TODO: FILL THIS IN!
+
+		for (int i = 0; i < size; i++) {
+			if(equals(target, array[i])) {
+				return i;
+			}
+		}
 		return -1;
 	}
 
@@ -182,7 +205,24 @@ public class MyArrayList<T> implements List<T> {
 	@Override
 	public T remove(int index) {
 		// TODO: FILL THIS IN!
-		return null;
+		// 여기 index range 처리해줘야하나?
+		if (index < 0 || index >= size) {
+			throw new IndexOutOfBoundsException();
+		}
+
+		T removeV = array[index];
+
+		for (int i = index; i < size-1; i++) {
+			array[i] = array[i+1];
+		}
+
+		// 마지막 값 null 처리
+		array[size-1] = null;
+
+		// 하나 없어졌으니깐 사이즈 줄여준다.
+		size--;
+
+		return removeV;
 	}
 
 	@Override
@@ -202,7 +242,19 @@ public class MyArrayList<T> implements List<T> {
 	@Override
 	public T set(int index, T element) {
 		// TODO: FILL THIS IN!
-		return null;
+
+		// 우선 마지막에 추가해줌 (배열 리사이징 목적)
+		add(element);
+
+		// 뒤에서 부터 접근해서 하나씩 땡겨줌
+		// 뒤에 추가해놨어도 이 과정에서 추가한 값 사라짐
+		for (int i = size-1; i > index; i--) {
+			array[i] = array[i-1];
+		}
+		// 해당 index에 추가한다.
+		array[index] = element;
+
+		return element;
 	}
 
 	@Override

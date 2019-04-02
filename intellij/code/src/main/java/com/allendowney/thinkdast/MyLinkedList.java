@@ -83,6 +83,20 @@ public class MyLinkedList<E> implements List<E> {
 	@Override
 	public void add(int index, E element) {
 		//TODO: FILL THIS IN!
+
+		// 예외처리 까먹음
+		if (index == 0) {
+			// O(1) - 맞춤
+			// 첫번째 노드일 경우 새로운 노드 생성 후 원래 첫번째 노드 연결한다.
+			head = new Node(element, head);
+		} else {
+			// O(N) - 맞춤
+			// 1. 이전 노드 다음을 현재 새로운 노드로 지정
+			Node before = getNode(index-1); // 이전 노드 찾아옴
+
+			// 2. 새로운 노드 다음을 이전노드의 다음과 연결
+			before.next = new Node(element, before.next);
+		}
 	}
 
 	@Override
@@ -144,6 +158,15 @@ public class MyLinkedList<E> implements List<E> {
 	@Override
 	public int indexOf(Object target) {
 		//TODO: FILL THIS IN!
+
+		// O(N) - 맞춤
+		Node node = head;
+		for (int i=0; i<size; i++) {
+			if (equals(target, node.data)) {
+				return i;
+			}
+			node = node.next;
+		}
 		return -1;
 	}
 
@@ -209,6 +232,50 @@ public class MyLinkedList<E> implements List<E> {
 	@Override
 	public E remove(int index) {
 		//TODO: FILL THIS IN!
+
+		// range 처리
+		if (index < 0 || index >= size) {
+			throw new IndexOutOfBoundsException();
+		}
+
+		// 만약 첫번째라면 그냥 head를 next로 변경
+		if (index == 0) {
+			// O(1)
+			head = head.next;
+		} else { // 첫번째 노드가 아니므로, 이전 노드가 무조건 있다!
+			// O(N)
+			// 이전 노드와 다음 노드를 연결해주어야 한다.
+			Node before = getNode(index-1);
+			/*
+			의문 : 만약 size가 5여서, index가 0~4인 경우라고 생각해보자.
+			remove(5)를 호출한 경우
+			1. 일단 index != 0라서 여기로 들어온다.
+			2. 이전 노드를 찾아온다 => 4! (4.next = null)
+			2. 아래 코드를 곧바로 실시할 경우
+			before.next = null이므로 before.next.next = (null).next가 되어 실행이 안되지 않나?
+			어쨌든간에 null이더라도 Object 타입을 Node로 선언해뒀기 때문에 next 변수자체에 접근이 되고, 그래서 null을 받아와서 에러가 안뜨는건가?
+			TODO : 테스트해보고 여쭤보기
+			 */
+			before.next = before.next.next;
+		}
+
+		size--;
+
+		// 이전 노드를 가져온다. => 자신 노드 제외 앞-뒤 연결해 줄 목적
+		// 만약 없다면 getNode 내부에서 index 예외처리 해줄 것
+		Node before = getNode(index - 1);
+
+		// 성공적으로 가져왔다면 앞-뒤 연결해준다.
+		Node node = before.next; // 없애줄 노드
+		if (node == null)
+
+		// 예외처리 까먹음
+		if (index == 0) {
+			head = null;
+		} else {
+
+		}
+
 		return null;
 	}
 
