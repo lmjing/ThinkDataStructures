@@ -20,6 +20,8 @@ public class Index {
 
     /**
      * Adds a TermCounter to the set associated with `term`.
+     * 검색어와 연관된 집합에 새로운 TermCounter 객체를 추가
+     * TermCounter 객체 : 검색어가 등장하는 웹 페이지 의미
      *
      * @param term
      * @param tc
@@ -82,8 +84,13 @@ public class Index {
         // TODO: Your code here
 
         // make a TermCounter and count the terms in the paragraphs
+        TermCounter counter = new TermCounter(url);
+        counter.processElements(paragraphs); // 단락에 있는 단어 셈
 
         // for each term in the TermCounter, add the TermCounter to the index
+        for (String term : counter.keySet()) {
+            add(term, counter);
+        }
     }
 
     /**
