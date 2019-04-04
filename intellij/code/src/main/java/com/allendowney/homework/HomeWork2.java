@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 
+
 public class HomeWork2 {
 
     static int max = 0; // 자리 수 만큼 돌기 위함
@@ -23,17 +24,20 @@ public class HomeWork2 {
         }
 
         // 무식하게 일단 10번 리셋
-        Queue<Integer>[] newQueues = new Queue[10];
-        for (int i=0; i<10; i++) {
+        Queue<Integer>[] newQueues = new Queue[20];
+        for (int i=0; i<20; i++) {
             newQueues[i] = new LinkedList<>();
         }
 
-        // 0 ~ 9에 담겨있던 애들 꺼내서 다시 담기
+        //
+
+        // 0 ~ 19에 담겨있던 애들 꺼내서 다시 담기
         for (Queue<Integer> q : queues) {
             while (!q.isEmpty()) { // queue안에 있는거 다 꺼냄
                 int input = q.poll(); // 입력 값 꺼내서
-                int s = (input / div) % 10; // 그 다음 queue에 들어갈 위치
-                newQueues[s].add(input); // 그 다음 큐에 넣는다.
+                int abs = Math.abs(input); // 절대값 구함
+                int s = (abs / div) % 10; // 그 다음 queue에 들어갈 위치
+                newQueues[input < 0 ? 9 - s : 10 + s].add(input); // 그 다음 큐에 넣는다.
             }
         }
         function(div * 10, newQueues);
@@ -47,8 +51,8 @@ public class HomeWork2 {
         int N = sc.nextInt();
 
         // 무식하게 일단 10번 리셋
-        Queue<Integer>[] newQueues = new Queue[10];
-        for (int i=0; i<10; i++) {
+        Queue<Integer>[] newQueues = new Queue[20];
+        for (int i=0; i<20; i++) {
             newQueues[i] = new LinkedList<>();
         }
 
@@ -56,11 +60,14 @@ public class HomeWork2 {
         for (int i=0; i<N; i++) {
             // max 찾기
             int input = sc.nextInt();
-            max = max < input ? input : max;
+            int abs = Math.abs(input);
+            max = max < abs ? abs : max;
 
-            // 일단 1의 자리 기준으로 구함
-            int s = input % 10;
-            newQueues[s].add(input);
+            // 1의 자리 구한 후
+            // -9 ~ -0 ~ 0 ~ 9 순서로 넣어줌
+            int s = abs % 10;
+//            newQueues[input > 0 ? s : 19 - s].add(input);
+            newQueues[input < 0 ? 9 - s : 10 + s].add(input);
         }
 
         function(10, newQueues);
