@@ -31,6 +31,7 @@ public class MyLinearMapTest {
 		map.put("One", 1);
 		map.put("Two", 2);
 		map.put("Three", 3);
+		map.put(null, 10);
 		map.put(null, 0);
 	}
 

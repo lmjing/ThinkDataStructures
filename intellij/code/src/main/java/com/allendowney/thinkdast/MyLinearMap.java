@@ -112,14 +112,13 @@ public class MyLinearMap<K, V> implements Map<K, V> {
 	public V get(Object key) {
 		// TODO: FILL THIS IN!
 
-		V vaule = null;
 		// key값을 활용하여 entry를 찾는다.
 		Entry entry = findEntry(key);
 		// entry를 찾았다면 value를 담는다.
 		if (entry != null)
-			vaule = entry.getValue();
+			return entry.getValue();
 
-		return vaule;
+		return null;
 	}
 
 	@Override
@@ -139,20 +138,18 @@ public class MyLinearMap<K, V> implements Map<K, V> {
 	@Override
 	public V put(K key, V value) {
 		// TODO: FILL THIS IN!
+		// 리턴 값은 이전 key에 맵핑된 value이다.
 
-		for (int i=0; i<entries.size(); i++) {
-			Entry entry = entries.get(i);
-			// 돌아가면서 비교한 후 존재할 경우 replace
-			if (equals(key, entry.getKey())) {
-				entry.setValue(value);
-				entries.set(i, entry); // 기존 위치에 있던 entry 정보 수정
-				return value;
-			}
+		Entry entry = findEntry(key);
+
+		if (entry == null) {
+			entries.add(new Entry(key, value));
+			return null; // 이전 노드가 없으면 null을 리턴한다.
+		} else {
+			V oldValue = entry.getValue();
+			entry.setValue(value); // 새로운 value 삽입 - 주소 참조형으로 entries의 값도 변한다.
+			return oldValue;
 		}
-		// key가 저장되어 있지 않을 경우 새로 생성
-		entries.add(new Entry(key, value));
-
-		return value;
 	}
 
 	@Override
@@ -165,17 +162,24 @@ public class MyLinearMap<K, V> implements Map<K, V> {
 	@Override
 	public V remove(Object key) {
 		// TODO: FILL THIS IN!
-
-		for (int i=0; i<entries.size(); i++) {
-			Entry entry = entries.get(i);
-			if (equals(key, entry.getKey())) {
-				// 일치하면 삭제
-				entries.remove(i);
-				return entry.getValue();
-			}
+		Entry entry = findEntry(key);
+		if (entry == null)
+			return null;
+		else {
+			entries.remove(entry); // 근데 이렇게 삭제하면 불필요한 for문을 한번 더 돌지 않나...?
+			return entry.getValue();
 		}
 
-		return null;
+//		for (int i=0; i<entries.size(); i++) {
+//			Entry entry = entries.get(i);
+//			if (equals(key, entry.getKey())) {
+//				// 일치하면 삭제
+//				entries.remove(i);
+//				return entry.getValue();
+//			}
+////		}
+//
+//		return null;
 	}
 
 	@Override
@@ -198,6 +202,7 @@ public class MyLinearMap<K, V> implements Map<K, V> {
 	public static void main(String[] args) {
 		Map<String, Integer> map = new MyLinearMap<String, Integer>();
 		map.put("Word1", 1);
+		map.put("Word2", 1);
 		map.put("Word2", 2);
 		Integer value = map.get("Word1");
 		System.out.println(value);
