@@ -11,6 +11,11 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+/**
+ * 역할
+ * 1. 위키피디아 페이지 다운로드 HTML 파싱 -> 본문 선택 코드 캡슐화 제공
+ * 2. 요청 사이 시간 파악 -> 동작 지연 (서비스 약관 위배하지 않기 위함)
+ */
 
 public class WikiFetcher {
 	private long lastRequestTime = -1;
@@ -18,6 +23,8 @@ public class WikiFetcher {
 
 	/**
 	 * Fetches and parses a URL string, returning a list of paragraph elements.
+	 * URL 파싱하고 본문 가져옴
+	 * 단락 요소의 리스트를 반환함.
 	 *
 	 * @param url
 	 * @return
@@ -26,14 +33,15 @@ public class WikiFetcher {
 	public Elements fetchWikipedia(String url) throws IOException {
 		sleepIfNeeded();
 
-		// download and parse the document
+		// URL 파싱
 		Connection conn = Jsoup.connect(url);
 		Document doc = conn.get();
 
-		// select the content text and pull out the paragraphs.
+		// 단락 요소의 리스트를 반환
 		Element content = doc.getElementById("mw-content-text");
 
 		// TODO: avoid selecting paragraphs from sidebars and boxouts
+		// p태그 요소만 추출하여 사이드바와 박스 부분
 		Elements paras = content.select("p");
 		return paras;
 	}
@@ -63,6 +71,7 @@ public class WikiFetcher {
 
 	/**
 	 * Rate limits by waiting at least the minimum interval between requests.
+	 * 바로 앞 요청 이후 경과 시간을 검사하여 밀리초 미만이면 동작을 지연시킴
 	 */
 	private void sleepIfNeeded() {
 		if (lastRequestTime != -1) {
