@@ -25,7 +25,7 @@ public class MyLinearMap<K, V> implements Map<K, V> {
 
 	// Entry 객체는 키-값 쌍을 포함하는 컨테이너
 	public class Entry implements Map.Entry<K, V> {
-		// K, V 타입을 제네릭하게 입력 받아 선언
+		// K, V 타입을 입력 받아 선언
 		private K key;
 		private V value;
 
@@ -67,15 +67,15 @@ public class MyLinearMap<K, V> implements Map<K, V> {
 	 */
 	private Entry findEntry(Object target) {
 		// TODO: FILL THIS IN!
-		// 1. target key로 엔트리 검색
+
+		// target key로 엔트리 검색
 		for (Entry entry : entries) {
 			if (equals(entry.getKey(), target)) {
-					// key 값이 동일한 경우 -> 찾음
-					return entry;
-				}
+				// key 값이 동일한 경우 -> 찾음
+				return entry;
+			}
 			// 일치하지 않는 경우 -> 다음 엔트리 확인
 		}
-
 		return null;
 	}
 
@@ -111,7 +111,15 @@ public class MyLinearMap<K, V> implements Map<K, V> {
 	@Override
 	public V get(Object key) {
 		// TODO: FILL THIS IN!
-		return null;
+
+		V vaule = null;
+		// key값을 활용하여 entry를 찾는다.
+		Entry entry = findEntry(key);
+		// entry를 찾았다면 value를 담는다.
+		if (entry != null)
+			vaule = entry.getValue();
+
+		return vaule;
 	}
 
 	@Override
@@ -132,9 +140,19 @@ public class MyLinearMap<K, V> implements Map<K, V> {
 	public V put(K key, V value) {
 		// TODO: FILL THIS IN!
 
-		// 1. 키가 있는지 확인 한다.
+		for (int i=0; i<entries.size(); i++) {
+			Entry entry = entries.get(i);
+			// 돌아가면서 비교한 후 존재할 경우 replace
+			if (equals(key, entry.getKey())) {
+				entry.setValue(value);
+				entries.set(i, entry); // 기존 위치에 있던 entry 정보 수정
+				return value;
+			}
+		}
+		// key가 저장되어 있지 않을 경우 새로 생성
+		entries.add(new Entry(key, value));
 
-		return null;
+		return value;
 	}
 
 	@Override
@@ -147,6 +165,16 @@ public class MyLinearMap<K, V> implements Map<K, V> {
 	@Override
 	public V remove(Object key) {
 		// TODO: FILL THIS IN!
+
+		for (int i=0; i<entries.size(); i++) {
+			Entry entry = entries.get(i);
+			if (equals(key, entry.getKey())) {
+				// 일치하면 삭제
+				entries.remove(i);
+				return entry.getValue();
+			}
+		}
+
 		return null;
 	}
 

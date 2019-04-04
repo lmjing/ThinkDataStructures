@@ -68,13 +68,14 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/allendowney/thinkdast/MyLinearMap.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="71" column="49" selection-start-line="71" selection-start-column="49" selection-end-line="71" selection-end-column="49" />
+            <state relative-caret-position="260">
+              <caret line="174" column="13" lean-forward="true" selection-start-line="174" selection-start-column="13" selection-end-line="174" selection-end-column="13" />
               <folding>
-                <element signature="e#1998#1999#0" expanded="true" />
-                <element signature="e#2152#2153#0" expanded="true" />
-                <element signature="e#2747#2748#0" expanded="true" />
-                <element signature="e#3571#3572#0" expanded="true" />
+                <element signature="e#448#455#0" expanded="true" />
+                <element signature="e#1986#1987#0" expanded="true" />
+                <element signature="e#2300#2301#0" expanded="true" />
+                <element signature="e#3383#3384#0" expanded="true" />
+                <element signature="e#4207#4208#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -83,8 +84,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/allendowney/thinkdast/MyLinearMapTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="296">
-              <caret line="49" column="35" lean-forward="true" selection-start-line="49" selection-start-column="35" selection-end-line="49" selection-end-column="35" />
+            <state relative-caret-position="96">
+              <caret line="69" column="27" lean-forward="true" selection-start-line="69" selection-start-column="27" selection-end-line="69" selection-end-column="27" />
             </state>
           </provider>
         </entry>
@@ -152,10 +153,20 @@
       <find>indexpage</find>
       <find>main</find>
       <find>keyset</find>
-      <find>todo</find>
       <find>finden</find>
-      <find>put</find>
       <find>equal</find>
+      <find>put</find>
+      <find>containsKey</find>
+      <find>todo</find>
+      <find>contain</find>
+      <find>compare</find>
+      <find>제네릭</find>
+      <find>find</find>
+      <find>replac</find>
+      <find>remove</find>
+      <find>get</find>
+      <find>put(</find>
+      <find>get(</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -176,10 +187,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-2190" />
-    <option name="y" value="57" />
+    <option name="x" value="-1918" />
+    <option name="y" value="206" />
     <option name="width" value="1920" />
-    <option name="height" value="1080" />
+    <option name="height" value="1103" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -294,7 +305,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554337872647" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554341131861" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="Arquillian JUnit4" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../solutions" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -325,23 +336,9 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.MyLinearMapTest">
+  <component name="RunManager" selected="JUnit.MyLinearMapTest.testGet">
     <configuration name="Index" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.allendowney.thinkdast.Index" />
-      <module name="code_main" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.allendowney.thinkdast.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TermCounter" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.allendowney.thinkdast.TermCounter" />
       <module name="code_main" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <extension name="coverage">
@@ -393,7 +390,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TermCounterTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MyLinearMapTest.testClear" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="code_main" />
       <extension name="coverage">
         <pattern>
@@ -402,8 +399,26 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.allendowney.thinkdast" />
-      <option name="MAIN_CLASS_NAME" value="com.allendowney.thinkdast.TermCounterTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="MAIN_CLASS_NAME" value="com.allendowney.thinkdast.MyLinearMapTest" />
+      <option name="METHOD_NAME" value="testClear" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MyLinearMapTest.testGet" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="code_main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.allendowney.thinkdast.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.allendowney.thinkdast" />
+      <option name="MAIN_CLASS_NAME" value="com.allendowney.thinkdast.MyLinearMapTest" />
+      <option name="METHOD_NAME" value="testGet" />
+      <option name="TEST_OBJECT" value="method" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -426,19 +441,19 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.TermCounter" />
       <item itemvalue="Application.Index" />
-      <item itemvalue="JUnit.TermCounterTest" />
       <item itemvalue="JUnit.IndexTest.testIndexPage" />
       <item itemvalue="JUnit.MyLinearMapTest" />
+      <item itemvalue="JUnit.MyLinearMapTest.testClear" />
+      <item itemvalue="JUnit.MyLinearMapTest.testGet" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.MyLinearMapTest.testGet" />
         <item itemvalue="JUnit.MyLinearMapTest" />
+        <item itemvalue="JUnit.MyLinearMapTest.testClear" />
         <item itemvalue="Application.Index" />
         <item itemvalue="JUnit.IndexTest.testIndexPage" />
-        <item itemvalue="Application.TermCounter" />
-        <item itemvalue="JUnit.TermCounterTest" />
       </list>
     </recent_temporary>
   </component>
@@ -453,7 +468,7 @@
       <option name="presentableId" value="Default" />
       <updated>1524898475722</updated>
       <workItem from="1554210931431" duration="3444000" />
-      <workItem from="1554332343245" duration="5484000" />
+      <workItem from="1554332343245" duration="8713000" />
     </task>
     <servers />
   </component>
@@ -470,9 +485,24 @@
     <history-entry file="MyLinearMapTest - 2019.04.04 at 09h 26m 34s.xml">
       <configuration name="MyLinearMapTest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="MyLinearMapTest_testClear - 2019.04.04 at 10h 22m 09s.xml">
+      <configuration name="MyLinearMapTest.testClear" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MyLinearMapTest - 2019.04.04 at 10h 23m 17s.xml">
+      <configuration name="MyLinearMapTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MyLinearMapTest_testGet - 2019.04.04 at 10h 24m 19s.xml">
+      <configuration name="MyLinearMapTest.testGet" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MyLinearMapTest_testGet - 2019.04.04 at 10h 24m 37s.xml">
+      <configuration name="MyLinearMapTest.testGet" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MyLinearMapTest_testGet - 2019.04.04 at 10h 25m 26s.xml">
+      <configuration name="MyLinearMapTest.testGet" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9723000" />
+    <option name="totallyTimeSpent" value="12952000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1927" y="-7" width="1550" height="838" extended-state="6" />
@@ -485,31 +515,31 @@
       <window_info id="UI Designer" order="4" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info anchor="bottom" id="Build" />
-      <window_info anchor="bottom" id="Database Changes" />
-      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3282967" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39889959" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.3287483" />
-      <window_info anchor="right" id="Maven" />
-      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="right" id="Gradle" order="5" weight="0.32956383" />
-      <window_info anchor="right" id="Theme Preview" order="6" />
-      <window_info anchor="right" id="Database" order="7" />
-      <window_info anchor="right" id="Palette&#9;" order="8" />
-      <window_info anchor="right" id="Maven Projects" order="9" />
+      <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="1" />
+      <window_info anchor="bottom" id="Build" order="2" />
+      <window_info anchor="bottom" id="Message" order="3" />
+      <window_info anchor="bottom" id="Find" order="4" />
+      <window_info active="true" anchor="bottom" id="Run" order="5" visible="true" weight="0.3282967" />
+      <window_info anchor="bottom" id="Debug" order="6" weight="0.39889959" />
+      <window_info anchor="bottom" id="Cvs" order="7" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="8" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="9" />
+      <window_info anchor="bottom" id="Terminal" order="10" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="12" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Messages" order="13" weight="0.3287483" />
+      <window_info anchor="right" id="Maven" order="0" />
+      <window_info anchor="right" id="Commander" order="1" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="4" />
+      <window_info anchor="right" id="Capture Analysis" order="5" />
+      <window_info anchor="right" id="Gradle" order="6" weight="0.32956383" />
+      <window_info anchor="right" id="Theme Preview" order="7" />
+      <window_info anchor="right" id="Database" order="8" />
+      <window_info anchor="right" id="Palette&#9;" order="9" />
+      <window_info anchor="right" id="Maven Projects" order="10" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -676,20 +706,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/allendowney/thinkdast/MyLinearMapTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
-          <caret line="49" column="35" lean-forward="true" selection-start-line="49" selection-start-column="35" selection-end-line="49" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/src.zip!/java/util/Map.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="239" column="6" selection-start-line="239" selection-start-column="6" selection-end-line="239" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/src.zip!/java/lang/Object.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="154">
@@ -701,15 +717,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/src.zip!/java/util/Map.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="211" column="6" selection-start-line="211" selection-start-column="6" selection-end-line="211" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/src.zip!/java/util/List.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="543" column="6" selection-start-line="543" selection-start-column="6" selection-end-line="543" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/allendowney/thinkdast/MyLinearMapTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="69" column="27" lean-forward="true" selection-start-line="69" selection-start-column="27" selection-end-line="69" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/allendowney/thinkdast/MyLinearMap.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="71" column="49" selection-start-line="71" selection-start-column="49" selection-end-line="71" selection-end-column="49" />
+        <state relative-caret-position="260">
+          <caret line="174" column="13" lean-forward="true" selection-start-line="174" selection-start-column="13" selection-end-line="174" selection-end-column="13" />
           <folding>
-            <element signature="e#1998#1999#0" expanded="true" />
-            <element signature="e#2152#2153#0" expanded="true" />
-            <element signature="e#2747#2748#0" expanded="true" />
-            <element signature="e#3571#3572#0" expanded="true" />
+            <element signature="e#448#455#0" expanded="true" />
+            <element signature="e#1986#1987#0" expanded="true" />
+            <element signature="e#2300#2301#0" expanded="true" />
+            <element signature="e#3383#3384#0" expanded="true" />
+            <element signature="e#4207#4208#0" expanded="true" />
           </folding>
         </state>
       </provider>
