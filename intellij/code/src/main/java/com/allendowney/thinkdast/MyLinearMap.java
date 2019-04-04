@@ -23,7 +23,9 @@ public class MyLinearMap<K, V> implements Map<K, V> {
 
 	private List<Entry> entries = new ArrayList<Entry>();
 
+	// Entry 객체는 키-값 쌍을 포함하는 컨테이너
 	public class Entry implements Map.Entry<K, V> {
+		// K, V 타입을 제네릭하게 입력 받아 선언
 		private K key;
 		private V value;
 
@@ -59,11 +61,21 @@ public class MyLinearMap<K, V> implements Map<K, V> {
 
 	/**
 	 * Returns the entry that contains the target key, or null if there is none.
+	 * 헬퍼 메서드 - 여러 메소드에서 사용 가능
 	 *
 	 * @param target
 	 */
 	private Entry findEntry(Object target) {
 		// TODO: FILL THIS IN!
+		// 1. target key로 엔트리 검색
+		for (Entry entry : entries) {
+			if (equals(entry.getKey(), target)) {
+					// key 값이 동일한 경우 -> 찾음
+					return entry;
+				}
+			// 일치하지 않는 경우 -> 다음 엔트리 확인
+		}
+
 		return null;
 	}
 
@@ -119,6 +131,9 @@ public class MyLinearMap<K, V> implements Map<K, V> {
 	@Override
 	public V put(K key, V value) {
 		// TODO: FILL THIS IN!
+
+		// 1. 키가 있는지 확인 한다.
+
 		return null;
 	}
 

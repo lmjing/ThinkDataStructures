@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="7af5d49f-a5c2-40e3-91a7-b27378d76444" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/allendowney/thinkdast/Index.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/allendowney/thinkdast/Index.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/allendowney/thinkdast/MyLinearMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/allendowney/thinkdast/MyLinearMap.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -39,33 +39,6 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/allendowney/thinkdast/WikiNodeExample.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
-              <caret line="17" column="23" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/allendowney/thinkdast/WikiParserTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="350">
-              <caret line="23" column="9" selection-start-line="23" selection-start-column="9" selection-end-line="23" selection-end-column="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/allendowney/thinkdast/WikiParser.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="950">
-              <caret line="44" column="26" selection-start-line="44" selection-start-column="26" selection-end-line="44" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/allendowney/thinkdast/WikiFetcher.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="400">
@@ -83,11 +56,35 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/allendowney/thinkdast/Index.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="335">
-              <caret line="91" column="31" lean-forward="true" selection-start-line="91" selection-start-column="31" selection-end-line="91" selection-end-column="31" />
+            <state relative-caret-position="150">
+              <caret line="85" column="67" lean-forward="true" selection-start-line="85" selection-start-column="67" selection-end-line="85" selection-end-column="67" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/allendowney/thinkdast/MyLinearMap.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="71" column="49" selection-start-line="71" selection-start-column="49" selection-end-line="71" selection-end-column="49" />
+              <folding>
+                <element signature="e#1998#1999#0" expanded="true" />
+                <element signature="e#2152#2153#0" expanded="true" />
+                <element signature="e#2747#2748#0" expanded="true" />
+                <element signature="e#3571#3572#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/allendowney/thinkdast/MyLinearMapTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="296">
+              <caret line="49" column="35" lean-forward="true" selection-start-line="49" selection-start-column="35" selection-end-line="49" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -156,6 +153,9 @@
       <find>main</find>
       <find>keyset</find>
       <find>todo</find>
+      <find>finden</find>
+      <find>put</find>
+      <find>equal</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -171,14 +171,15 @@
         <option value="$PROJECT_DIR$/src/main/java/com/allendowney/thinkdast/WikiPhilosophy.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/allendowney/thinkdast/TermCounter.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/allendowney/thinkdast/Index.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/allendowney/thinkdast/MyLinearMap.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-9" />
-    <option name="y" value="-9" />
-    <option name="width" value="1938" />
-    <option name="height" value="1048" />
+    <option name="x" value="-2190" />
+    <option name="y" value="57" />
+    <option name="width" value="1920" />
+    <option name="height" value="1080" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -293,7 +294,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554335552206" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554337872647" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="Arquillian JUnit4" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../solutions" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -324,7 +325,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Index">
+  <component name="RunManager" selected="JUnit.MyLinearMapTest">
     <configuration name="Index" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.allendowney.thinkdast.Index" />
       <module name="code_main" />
@@ -341,20 +342,6 @@
     </configuration>
     <configuration name="TermCounter" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.allendowney.thinkdast.TermCounter" />
-      <module name="code_main" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.allendowney.thinkdast.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="WikiPhilosophy" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.allendowney.thinkdast.WikiPhilosophy" />
       <module name="code_main" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <extension name="coverage">
@@ -385,6 +372,22 @@
       <option name="MAIN_CLASS_NAME" value="com.allendowney.thinkdast.IndexTest" />
       <option name="METHOD_NAME" value="testIndexPage" />
       <option name="TEST_OBJECT" value="method" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MyLinearMapTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="code_main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.allendowney.thinkdast.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.allendowney.thinkdast" />
+      <option name="MAIN_CLASS_NAME" value="com.allendowney.thinkdast.MyLinearMapTest" />
+      <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -423,19 +426,19 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.WikiPhilosophy" />
-      <item itemvalue="JUnit.TermCounterTest" />
       <item itemvalue="Application.TermCounter" />
-      <item itemvalue="JUnit.IndexTest.testIndexPage" />
       <item itemvalue="Application.Index" />
+      <item itemvalue="JUnit.TermCounterTest" />
+      <item itemvalue="JUnit.IndexTest.testIndexPage" />
+      <item itemvalue="JUnit.MyLinearMapTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.MyLinearMapTest" />
         <item itemvalue="Application.Index" />
         <item itemvalue="JUnit.IndexTest.testIndexPage" />
         <item itemvalue="Application.TermCounter" />
         <item itemvalue="JUnit.TermCounterTest" />
-        <item itemvalue="Application.WikiPhilosophy" />
       </list>
     </recent_temporary>
   </component>
@@ -450,7 +453,7 @@
       <option name="presentableId" value="Default" />
       <updated>1524898475722</updated>
       <workItem from="1554210931431" duration="3444000" />
-      <workItem from="1554332343245" duration="3181000" />
+      <workItem from="1554332343245" duration="5484000" />
     </task>
     <servers />
   </component>
@@ -464,12 +467,15 @@
     <history-entry file="IndexTest_testIndexPage - 2019.04.04 at 08h 49m 34s.xml">
       <configuration name="IndexTest.testIndexPage" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="MyLinearMapTest - 2019.04.04 at 09h 26m 34s.xml">
+      <configuration name="MyLinearMapTest" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7420000" />
+    <option name="totallyTimeSpent" value="9723000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="-1927" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21028645" />
@@ -665,8 +671,46 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/allendowney/thinkdast/Index.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="335">
-          <caret line="91" column="31" lean-forward="true" selection-start-line="91" selection-start-column="31" selection-end-line="91" selection-end-column="31" />
+        <state relative-caret-position="150">
+          <caret line="85" column="67" lean-forward="true" selection-start-line="85" selection-start-column="67" selection-end-line="85" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/allendowney/thinkdast/MyLinearMapTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="296">
+          <caret line="49" column="35" lean-forward="true" selection-start-line="49" selection-start-column="35" selection-end-line="49" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/src.zip!/java/util/Map.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="239" column="6" selection-start-line="239" selection-start-column="6" selection-end-line="239" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/src.zip!/java/lang/Object.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="147" column="19" selection-start-line="147" selection-start-column="19" selection-end-line="147" selection-end-column="19" />
+          <folding>
+            <element signature="e#5748#5749#0" expanded="true" />
+            <element signature="e#5784#5785#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/allendowney/thinkdast/MyLinearMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="71" column="49" selection-start-line="71" selection-start-column="49" selection-end-line="71" selection-end-column="49" />
+          <folding>
+            <element signature="e#1998#1999#0" expanded="true" />
+            <element signature="e#2152#2153#0" expanded="true" />
+            <element signature="e#2747#2748#0" expanded="true" />
+            <element signature="e#3571#3572#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
