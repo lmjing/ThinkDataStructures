@@ -5,6 +5,7 @@ import java.util.Scanner;
 /**
  * 2주차
  * 힙 소트
+ * TODO : 삽입을 다 받은 후 정렬 일괄적으로 처리하기
  */
 public class HomeWork2_2 {
 
