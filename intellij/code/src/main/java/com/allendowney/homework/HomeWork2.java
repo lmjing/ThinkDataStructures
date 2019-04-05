@@ -28,7 +28,7 @@ public class HomeWork2 {
     private static void sort(Map<Integer, Queue<Integer>> map, int div) {
         if (max < div) {
             // 결과 출력
-            printResult(map);
+            printResult2(map);
             return;
         }
 
@@ -42,6 +42,29 @@ public class HomeWork2 {
             }
         }
         sort(newMap, div * 10);
+    }
+
+    private static void printResult2(Map<Integer, Queue<Integer>> map) {
+        Deque<Integer> deque = new LinkedList<>();
+        for (int i=0; i<9; i++) {
+            Queue<Integer> queue = map.get(i);
+            if (queue == null)
+                continue;
+            while (!queue.isEmpty()) {
+                int su = queue.poll();
+                if (su > 0)
+                    deque.addLast(su);
+                else
+                    deque.addFirst(su);
+            }
+        }
+
+        StringBuilder result = new StringBuilder();
+        for (int i : deque) {
+            result.append(i + "\n");
+        }
+
+        System.out.print(result);
     }
 
     private static void printResult(Map<Integer, Queue<Integer>> map) {
