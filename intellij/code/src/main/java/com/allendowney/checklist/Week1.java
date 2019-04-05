@@ -1,5 +1,7 @@
 package com.allendowney.checklist;
 
+import com.allendowney.thinkdast.MyArrayList;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,8 +11,17 @@ import java.util.List;
  */
 public class Week1 {
     public static void main (String[] args) {
-        List<Integer> test = testFunction();
-        test.add(2); // add 메소드는 list꺼다. arraylist인지 모름.
+//        List<Integer> test = testFunction();
+//        test.add(2); // add 메소드는 list꺼다. arraylist인지 모름.
+
+
+        List<Integer> test = new MyArrayList<>();
+        test.add(1);
+        test.add(2);
+        test.add(1);
+        for (int i : ((MyArrayList<Integer>) test).indexsOf(1)) {
+            System.out.println("1이 있는 위치 : " + i);
+        }
     }
 
     // List Interface를 리턴하는 함수

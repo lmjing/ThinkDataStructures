@@ -280,4 +280,18 @@ public class MyArrayList<T> implements List<T> {
 	public <U> U[] toArray(U[] array) {
 		throw new UnsupportedOperationException();
 	}
+
+	public int[] indexsOf(Object target) {
+		int ri = 0;
+		int[] equalIdexs = new int[size]; // 일단 전체 담을 수 있는 배열 생성
+
+		for (int i=0; i<size; i++) {
+			if (equals(array[i], target)) {
+				equalIdexs[ri++] = i; // 해당 인덱스를 넣어준다.
+			}
+		}
+
+		int[] result = ri == 0 ? null : Arrays.copyOf(equalIdexs, ri);
+		return result;
+	}
 }
