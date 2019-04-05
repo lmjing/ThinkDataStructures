@@ -46,7 +46,7 @@ public class HomeWork2 {
 
     private static void printResult(Map<Integer, Queue<Integer>> map) {
         Deque<Integer> deque = new LinkedList<>();
-        for (int i=0; i<9; i++) {
+        for (int i=0; i<=9; i++) {
             Queue<Integer> queue = map.get(i);
             if (queue == null)
                 continue;
