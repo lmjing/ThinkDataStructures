@@ -23,27 +23,32 @@ public class HomeWork2_2 {
             for (int i=0; i<N; i++)
                 array[idx++] = sc.nextInt();
 
-            int checkPoint = findRootIdx(N);
             // 마지막 노드의 부모부터 루트까지 순회하며 heapify
-            for (int i=findRootIdx(N); i>0; i--) {
+            for (int i=N/2; i>0; i--) {
                 heapify(i);
             }
         }
 
         /**
-         * i 기준으로 자식 값과의 비교를 통해 힙 조건 맞춤 (오직 자신과 자식들만 비교)
+         * i 기준으로 자식 값과의 비교를 통해 힙 조건 맞춤
+         * 힙 조건 : 부모 < 자식 && 왼쪽 자식 < 오른쪽 자식
          * 참고 : https://ratsgo.github.io/data%20structure&algorithm/2017/09/27/heapsort/
          * @param i : 부모 기준값
          */
         private void heapify(int i) {
-            if (i <= 0) return; // 루트까지 다 했으면
+            int lidx = i * 2;
+            int ridx = i * 2 + 1;
 
-            int childMinIdx = findChildMinIdx(i);
-            if (childMinIdx == -1) // 자녀가 없다면
-                return;
-
-            if (array[childMinIdx] > array[i]) // 자녀가 부모보다 크다면
-                swap(childMinIdx, i);
+            // 2. 바뀐 후, 부모-오른쪽 비교
+            if (ridx <= N && array[ridx] < array[i]) {
+                swap(ridx, i);
+                heapify(lidx); // 오른쪽 자식 바뀌었으므로 heapify 실행
+            }
+            // 1. 왼쪽 노드와 비교
+            if (lidx <= N && array[lidx] < array[i]) {
+                swap(lidx, i);
+                heapify(lidx); // 왼쪽 자식 바뀌었으므로 heapify 실행
+            }
         }
 
         private void swap(int i, int j) {
@@ -52,20 +57,12 @@ public class HomeWork2_2 {
             array[j] = temp;
         }
 
-        private int findChildMinIdx(int i) {
-            // 자녀 값 중 최소 찾기
-            int lidx = i * 2;
-            int ridx = i * 2 + 1;
-            
-            if (lidx <= this.idx) // 왼쪽 자녀가 없다면
-                return -1;
-            else if (ridx <= this.idx) // 왼쪽만 있다면
-                return ridx;
-            else return array[lidx] < array[ridx] ? lidx : ridx;
-        }
-
-        private int findRootIdx(int n) {
-            return n / 2;
+        public void printResult() {
+            StringBuilder str = new StringBuilder();
+            for (int i : array) {
+                str.append(i + "\n");
+            }
+            System.out.println(str);
         }
     }
 
@@ -77,13 +74,7 @@ public class HomeWork2_2 {
         HeapSort hs = new HeapSort(N);
         hs.buildHeap(sc); // 힙을 구성한다.
 
-        StringBuilder str = new StringBuilder();
-        // 전체 입력 값 배열에 저장
-        for (int i=0; i<N; i++) {
-            str.append(hs.array[i] + "\n");
-        }
-
-        System.out.println(str);
+        hs.printResult();
     }
 //
 //    static class HeapSort {
