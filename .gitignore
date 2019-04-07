@@ -63,9 +63,15 @@ intellij/solutions/.idea/**/libraries
 # When using Gradle or Maven with auto-import, you should exclude module files,
 # since they will be recreated, and may cause churn.  Uncomment if using
 # auto-import.
-# .idea/modules.xml
-# .idea/*.iml
-# .idea/modules
+.idea/modules.xml
+.idea/*.iml
+.idea/modules
+intellij/code/.idea/modules.xml
+intellij/code/.idea/*.iml
+intellij/code/.idea/modules
+intellij/solutions/.idea/modules.xml
+intellij/solutions/.idea/*.iml
+intellij/solutions/.idea/modules
 
 # CMake
 cmake-build-*/
