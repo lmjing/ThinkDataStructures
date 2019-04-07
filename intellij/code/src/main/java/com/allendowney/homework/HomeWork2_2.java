@@ -25,7 +25,7 @@ public class HomeWork2_2 {
 
             // 마지막 노드의 부모(리프노드가 아닌 것들 제외)부터 루트까지 순회하며 heapify
             for (int i=N/2; i>0; i--) {
-                heapify(i, N);
+                heapify(i, N + 1);
             }
         }
 
@@ -42,9 +42,9 @@ public class HomeWork2_2 {
             // 자식들 간의 비교 -> 더 작은 값과 변경
             // 더 작은 값과 변경할 경우 왼쪽(더 작음)도 만족함
             int ci = i;
-            if (lidx <= size && array[lidx] < array[ci])
+            if (lidx < size && array[lidx] < array[ci])
                 ci = lidx;
-            if (ridx <= size && array[ridx] < array[ci])
+            if (ridx < size && array[ridx] < array[ci])
                 ci = ridx;
             if (ci == i) return;
             swap(ci, i);
@@ -59,8 +59,8 @@ public class HomeWork2_2 {
 
         public void printResult() {
             StringBuilder str = new StringBuilder();
-            for (int i=1; i<N; i++) {
-                str.append(array[i] + "\n");
+            for (int i=1; i<=N; i++) {
+                str.append(array[1] + "\n");
                 // 맨마지막 값을 앞으로 가져온다.
                 swap(--idx, 1);
                 heapify(1, idx);
