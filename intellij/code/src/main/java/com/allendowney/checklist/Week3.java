@@ -2,6 +2,8 @@ package com.allendowney.checklist;
 
 import java.lang.reflect.Array;
 import java.util.EmptyStackException;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 public class Week3 {
@@ -54,6 +56,10 @@ public class Week3 {
     }
 
     public static void main(String[] args) {
+        testStackCode();
+    }
+
+    private static void testStackCode() {
         // 예외처리 확인용
 //        java.util.Stack<Integer>  stack = new java.util.Stack<>();
 
