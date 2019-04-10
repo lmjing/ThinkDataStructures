@@ -48,7 +48,7 @@ public class HomeWork3_2 {
 
         for (int i=0; i<N; i++) {
             int v =input[i];
-            inputMap.put(v, inputMap.get(v) == null ? 1 : inputMap.get(v) + 1); // 중복 제거하고 해당 값이 몇개 있는지 카운팅 함
+            inputMap.put(v, inputMap.getOrDefault(v, 0) + 1); // 중복 제거하고 해당 값이 몇개 있는지 카운팅 함
         }
     }
 

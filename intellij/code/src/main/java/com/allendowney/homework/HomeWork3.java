@@ -1,98 +1,89 @@
 package com.allendowney.homework;
 
-import java.util.Scanner;
+import java.util.*;
 
 public class HomeWork3 {
 
-    static int N;
-    static int M;
+    static int N, M;
+    static Map<Integer, Integer> inputMap = new HashMap();
     static int[] input;
+    public static int count = 0;
+    public static String result = "";
 
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        N = sc.nextInt();
-        M = sc.nextInt();
+        // 기존 코드 -> 테스트 위해서 다 모듈화함
+//        Scanner sc = new Scanner(System.in);
+//        N = sc.nextInt();
+//        M = sc.nextInt();
+//
+//        for (int i=0; i<N; i++) {
+//            int v = sc.nextInt();
+//            inputMap.put(v, inputMap.get(v) == null ? 1 : inputMap.get(v) + 1); // 중복 제거하고 해당 값이 몇개 있는지 카운팅 함
+//        }
 
-        input = new int[N];
-        for (int i=0; i<N; i++)
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+        int[] input = new int[n];
+        for (int i=0; i<n; i++)
             input[i] = sc.nextInt();
 
-        // 조합 (중복 허용 X)
-//        solution1(new int[N], 0, 0);
+        makeCountMap(n, m, input);
+        solution(0, new int[M]);
     }
 
-    // 조합 (재귀함수로 - 1,0,1)
-    static void solution1(int[] check, int idx, int saveCount) {
-        // 모든 경우는 들어가고 or 안들어가고 둘 중 하나임
-        if (saveCount == M) {
-            // M개가 되었으므로 프린트 해준다.
+    public static void makeCountMap(int n, int m, int[] input) {
+        N = n;
+        M = m;
+
+        for (int i=0; i<N; i++) {
+            int v =input[i];
+            inputMap.put(v, inputMap.get(v) == null ? 1 : inputMap.get(v) + 1); // 중복 제거하고 해당 값이 몇개 있는지 카운팅 함
+        }
+    }
+
+    /**
+     *
+     * @param i : 총 M자리수 중에서 i번째 자리를 채울 차례이다.
+     * @param output
+     */
+    static void solution(int i, int[] output) {
+        System.out.println(i + " " + Arrays.toString(output));
+        if (i >= M) {
             StringBuilder str = new StringBuilder();
-            for (int i=0; i<idx; i++) {
-                if (check[i] == 1)
-                    str.append(input[i]);
+            for (int su : output) {
+                str.append(su + " ");
             }
-            System.out.println(str); // 조합을 출력
+            count++;
+            result += str + "\n";
+//            System.out.println(str);
+            // 끝낸다.
             return;
         }
 
-        if (idx >= N) // 다돌았으면 끝
-            return;
-
-        // 아직 M개가 되지 않은 경우
-
-        // 현재 idx의 값을 포함하는 경우
-        check[idx] = 1;
-        solution1(check, idx + 1, saveCount + 1);
-
-        // 현재 idx의 값을 포함하지 않는 경우
-        check[idx] = 0;
-        solution1(check, idx + 1, saveCount);
-    }
-
-    // 조합 (재귀함수로 - 1,0,1) -> 원 순열 사용
-    static void solution2(int[] check, int idx, int saveCount) {
-        // 모든 경우는 들어가고 or 안들어가고 둘 중 하나임
-        if (saveCount == M) {
-            // M개가 되었으므로 프린트 해준다.
-            StringBuilder str = new StringBuilder();
-            for (int i=0; i<idx; i++) {
-                if (check[i] == 1)
-                    str.append(input[i]);
-            }
-            System.out.println(str); // 조합을 출력
-            return;
+        Set<Integer> keys = inputMap.keySet();
+        // map의 key가 자리에 들어갈 자격이 되는 아이들이다.
+        for (int key : keys) {
+            // output에 key값을 셋팅, map count도 줄여줌
+            removeKeyFromMap(key);
+            output[i] = key;
+            // 준비가 끝났으니 재귀함수 호출
+            solution(i + 1, output);
+            // 다른 케이스를 위해 원상복귀
+            recoveryMap(key);
         }
-
-        if (idx >= N) // 다돌았으면 끝
-            return;
-
-        // 아직 M개가 되지 않은 경우
-
-        // 현재 idx의 값을 포함하는 경우
-        check[idx] = 1;
-        solution1(check, idx + 1, saveCount + 1);
-
-        // 현재 idx의 값을 포함하지 않는 경우
-        check[idx] = 0;
-        solution1(check, idx + 1, saveCount);
     }
 
-    // 순열 - array는 M개
-//    static void solution3(int[] array, int idx, int count, StringBuilder result, int s) {
-//        if (idx >= M)
-//            idx = 0; // 끝났으면 처음을 다시 가르킨다.
-//
-//        // 모든 경우는 들어가고 or 안들어가고 둘 중 하나임
-//        if (count== M) {
-//            // 모두 담았으므로 결과 프린트
-//            System.out.println(result);
-//            return;
-//        }
-//
-//        // 현재 idx의 값을 담는 경우
-//        solution3(array, idx + 1, count + 1, new StringBuilder(result.append(array[idx]) + " "));
-//
-//        // 현재 idx의 값을 포함하지 않는 경우
-//        solution3(array, idx + 1, count, result);
-//    }
+    private static void recoveryMap(int key) {
+        inputMap.put(key, inputMap.getOrDefault(key, 0) + 1);
+    }
+
+    private static void removeKeyFromMap(int key) {
+        // key는 무조건 map에 있다.
+        if (inputMap.get(key) == 1) {
+            inputMap.remove(key); // 모두 사용했으므로 없애줌
+        }else {
+            inputMap.put(key, inputMap.get(key) - 1); // count 개수를 1 낮춰준다.
+        }
+    }
 }
