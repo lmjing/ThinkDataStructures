@@ -61,9 +61,16 @@ public class HomeWork3 {
             return;
         }
 
-        Set<Integer> keys = inputMap.keySet();
+        // TEST
+        int[] temp = new int[inputMap.keySet().size()];
+        int k=0;
+        for (int key : inputMap.keySet()) {
+            temp[k++] = key;
+        }
+
+        // 순회중 데이터 조작이 일어나서 ConcurrentModificationException가 자꾸 일어남
         // map의 key가 자리에 들어갈 자격이 되는 아이들이다.
-        for (int key : keys) {
+        for (int key : inputMap.keySet()) {
             // output에 key값을 셋팅, map count도 줄여줌
             removeKeyFromMap(key);
             output[i] = key;
