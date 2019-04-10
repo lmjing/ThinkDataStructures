@@ -51,7 +51,6 @@ public class HomeWork3 {
 
     // 조합 (재귀함수로 - 1,0,1) -> 원 순열 사용
     static void solution2(int[] check, int idx, int saveCount) {
-        if ()
         // 모든 경우는 들어가고 or 안들어가고 둘 중 하나임
         if (saveCount == M) {
             // M개가 되었으므로 프린트 해준다.
