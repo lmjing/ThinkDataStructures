@@ -1,5 +1,6 @@
 package com.allendowney.checklist;
 
+import com.allendowney.thinkdast.MyArrayList;
 import com.allendowney.thinkdast.Profiler;
 import com.sun.org.apache.xalan.internal.xsltc.compiler.util.StringStack;
 import org.jfree.data.xy.XYSeries;
@@ -147,8 +148,21 @@ public class Week3 {
 
         Queue<Integer> q = new ArrayDeque<>();
 
-        LinkedList<Integer> t = new LinkedList<>();
-        t.pop();
+        LinkedList<Integer> linkedStack = new LinkedList<>();
+        linkedStack.addLast(1); //push
+        linkedStack.addLast(2);
+        linkedStack.peekLast(); // peek
+        linkedStack.pollLast(); // pop
+        linkedStack.size(); // size
+        linkedStack.isEmpty(); // isEmpty
+
+        ArrayList<Integer> arrayStack = new ArrayList<>();
+        arrayStack.add(1); //push
+        arrayStack.add(2);
+        arrayStack.get(arrayStack.size() - 1); // peek
+        arrayStack.remove(arrayStack.size() - 1); // pop
+        arrayStack.size(); // size
+        arrayStack.isEmpty(); // isEmpty
     }
 
     private static void question1() {
