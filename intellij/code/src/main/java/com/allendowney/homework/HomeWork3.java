@@ -11,25 +11,31 @@ public class HomeWork3 {
     public static String result = "";
 
     public static void main(String[] args) {
-        // 기존 코드 -> 테스트 위해서 다 모듈화함
 //        Scanner sc = new Scanner(System.in);
-//        N = sc.nextInt();
-//        M = sc.nextInt();
+//        int n = sc.nextInt();
+//        int m = sc.nextInt();
+//        int[] input = new int[n];
+//        for (int i=0; i<n; i++)
+//            input[i] = sc.nextInt();
 //
-//        for (int i=0; i<N; i++) {
-//            int v = sc.nextInt();
-//            inputMap.put(v, inputMap.get(v) == null ? 1 : inputMap.get(v) + 1); // 중복 제거하고 해당 값이 몇개 있는지 카운팅 함
-//        }
+//        makeCountMap(n, m, input);
+//        solution(0, new int[M]);
 
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        int m = sc.nextInt();
+        int n = 20;
+        int m = 10;
         int[] input = new int[n];
-        for (int i=0; i<n; i++)
-            input[i] = sc.nextInt();
+        Random random = new Random();
+        StringBuilder inputStr = new StringBuilder();
+        for (int i=0; i<n; i++) {
+            input[i] = random.nextInt(10);
+            inputStr.append(input[i] + " ");
+        }
+        System.out.println("inputs : " + inputStr);
 
         makeCountMap(n, m, input);
-        solution(0, new int[M]);
+        solution(0, new int[m]);
+//        System.out.println(count);
+//        System.out.println(result);
     }
 
     public static void makeCountMap(int n, int m, int[] input) {
@@ -55,7 +61,8 @@ public class HomeWork3 {
             }
             count++;
             result += str + "\n";
-//            System.out.println(str);
+            // 큰 수들 돌렸을 때 잘 구하고 있는지 확인하기 위함
+            System.out.println(str);
             // 끝낸다.
             return;
         }

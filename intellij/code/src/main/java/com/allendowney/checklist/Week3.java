@@ -113,17 +113,20 @@ public class Week3 {
         profiler.plotResults(series); // 셋팅된 데이터를 기반으로 log-log 스케일로 증가차수에 따른 그래프 그림
     }
 
-    private static void question4() {
-//        String str = "test,tokenizer,split,,java,";
-//        StringTokenizer tokenizer = new StringTokenizer(str, ",");
-//        for (int i=0; tokenizer.hasMoreTokens(); i++) {
-//            System.out.println(i + "번째 : " + tokenizer.nextToken());
-//        }
-//
-//        String split[] = str.split(",");
-//        for (int i=0; i<split.length; i++)
-//            System.out.println(i + "번째 : " + split[i]);
+    private static void testDiffStringDivder() {
+        String str = "test,tokenizer,split,,java,";
+        StringTokenizer tokenizer = new StringTokenizer(str, ",");
+        for (int i=0; tokenizer.hasMoreTokens(); i++) {
+            System.out.println(i + "번째 : " + tokenizer.nextToken());
+        }
 
+        String split[] = str.split(",");
+        for (int i=0; i<split.length; i++)
+            System.out.println(i + "번째 : " + split[i]);
+    }
+
+    private static void question4() {
+//        testDiffStringDivder();
         profileSplitEnd();
 //        profileTokenizerEnd();
     }
@@ -141,7 +144,8 @@ public class Week3 {
 
     private static void question2() {
         Stack<Integer> stack = new Stack<Integer>();
-        Queue<Integer> q = new LinkedList<>();
+
+        Queue<Integer> q = new ArrayDeque<>();
 
         LinkedList<Integer> t = new LinkedList<>();
         t.pop();

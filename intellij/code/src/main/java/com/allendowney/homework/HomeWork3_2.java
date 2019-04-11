@@ -38,14 +38,17 @@ public class HomeWork3_2 {
         int m = 10;
         int[] input = new int[n];
         Random random = new Random();
+        StringBuilder inputStr = new StringBuilder();
         for (int i=0; i<n; i++) {
             input[i] = random.nextInt(10);
+            inputStr.append(input[i] + " ");
         }
+        System.out.println("inputs : " + inputStr);
 
         makeCountMap(n, m, input);
         solution(0, new int[m]);
 //        System.out.println(count);
-        System.out.println(result);
+//        System.out.println(result);
     }
 
     public static void setAllCount() {
@@ -78,6 +81,7 @@ public class HomeWork3_2 {
                 str.append(su + " ");
             }
             result += str + "\n";
+            // 큰 수들 돌렸을 때 잘 구하고 있는지 확인하기 위함
             System.out.println(str);
             count++;
             // 끝낸다.
