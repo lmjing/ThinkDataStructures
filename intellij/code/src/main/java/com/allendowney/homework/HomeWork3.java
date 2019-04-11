@@ -48,7 +48,6 @@ public class HomeWork3 {
      * @param output
      */
     static void solution(int i, int[] output) {
-        System.out.println(i + " " + Arrays.toString(output));
         if (i >= M) {
             StringBuilder str = new StringBuilder();
             for (int su : output) {

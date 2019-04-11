@@ -7,7 +7,7 @@ public class HomeWork3_2 {
     static int N, M;
     static Map<Integer, Integer> inputMap = new HashMap();
     static int[] input;
-    public static int count = 0;
+    public static long count = 0;
     public static String result = "";
 
     public static void main(String[] args) {
@@ -21,17 +21,31 @@ public class HomeWork3_2 {
 //            inputMap.put(v, inputMap.get(v) == null ? 1 : inputMap.get(v) + 1); // 중복 제거하고 해당 값이 몇개 있는지 카운팅 함
 //        }
 
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        int m = sc.nextInt();
+        // 예제로 주신 샘플코드 모듈화 테스트 버전
+//        Scanner sc = new Scanner(System.in);
+//        int n = sc.nextInt();
+//        int m = sc.nextInt();
+//        int[] input = new int[n];
+//        for (int i=0; i<n; i++)
+//            input[i] = sc.nextInt();
+//
+//        makeCountMap(n, m, input);
+//        setAllCount();
+//
+//        solution(0, new int[M]);
+
+        int n = 20;
+        int m = 10;
         int[] input = new int[n];
-        for (int i=0; i<n; i++)
-            input[i] = sc.nextInt();
+        Random random = new Random();
+        for (int i=0; i<n; i++) {
+            input[i] = random.nextInt(10);
+        }
 
         makeCountMap(n, m, input);
-        setAllCount();
-
-        solution(0, new int[M]);
+        solution(0, new int[m]);
+//        System.out.println(count);
+        System.out.println(result);
     }
 
     public static void setAllCount() {
@@ -64,7 +78,8 @@ public class HomeWork3_2 {
                 str.append(su + " ");
             }
             result += str + "\n";
-//            System.out.println(str);
+            System.out.println(str);
+            count++;
             // 끝낸다.
             return;
         }
