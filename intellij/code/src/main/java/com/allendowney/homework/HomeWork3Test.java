@@ -27,6 +27,16 @@ public class HomeWork3Test {
 	}
 
 	@Test
+	public void test() {
+		Scanner sc = new Scanner(System.in);
+		int n = 10;
+		int m = 5;
+		int[] input = new int[]{1, 2, 2, 2, 2, 3, 4, 4, 5};
+		ht.makeCountMap(n, m, input);
+		ht.solution(0, new int[m]);
+	}
+
+	@Test
 	public void testHomeWork3_2() throws IOException {
 		Scanner sc = new Scanner(System.in);
 		int n = 5;

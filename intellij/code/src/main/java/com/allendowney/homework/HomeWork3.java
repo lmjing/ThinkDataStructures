@@ -11,6 +11,16 @@ public class HomeWork3 {
     public static String result = "";
 
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = 10;
+        int m = 5;
+        int[] input = new int[]{10, 2, 2, 2, 2, 2, 30, 4, 4, 5};
+        makeCountMap(n, m, input);
+        solution(0, new int[m]);
+        System.out.println(count);
+        System.out.println(result);
+
+
 //        Scanner sc = new Scanner(System.in);
 //        int n = sc.nextInt();
 //        int m = sc.nextInt();
@@ -21,19 +31,19 @@ public class HomeWork3 {
 //        makeCountMap(n, m, input);
 //        solution(0, new int[M]);
 
-        int n = 20;
-        int m = 10;
-        int[] input = new int[n];
-        Random random = new Random();
-        StringBuilder inputStr = new StringBuilder();
-        for (int i=0; i<n; i++) {
-            input[i] = random.nextInt(10);
-            inputStr.append(input[i] + " ");
-        }
-        System.out.println("inputs : " + inputStr);
-
-        makeCountMap(n, m, input);
-        solution(0, new int[m]);
+//        int n = 20;
+//        int m = 10;
+//        int[] input = new int[n];
+//        Random random = new Random();
+//        StringBuilder inputStr = new StringBuilder();
+//        for (int i=0; i<n; i++) {
+//            input[i] = random.nextInt(10);
+//            inputStr.append(input[i] + " ");
+//        }
+//        System.out.println("inputs : " + inputStr);
+//
+//        makeCountMap(n, m, input);
+//        solution(0, new int[m]);
 //        System.out.println(count);
 //        System.out.println(result);
     }
@@ -62,7 +72,7 @@ public class HomeWork3 {
             count++;
             result += str + "\n";
             // 큰 수들 돌렸을 때 잘 구하고 있는지 확인하기 위함
-            System.out.println(str);
+//            System.out.println(str);
             // 끝낸다.
             return;
         }

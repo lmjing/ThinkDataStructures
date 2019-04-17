@@ -72,6 +72,18 @@ public class MyTreeMap<K, V> implements Map<K, V> {
 		Comparable<? super K> k = (Comparable<? super K>) target;
 
 		// TODO: FILL THIS IN!
+		Node cursor = root;
+		while (cursor != null) {
+			int compare = k.compareTo(cursor.key);
+
+			if (compare == 0) {
+				return cursor;
+			} else if (compare > 0)
+				cursor = cursor.right;
+			else
+				cursor = cursor.left;
+		}
+
 		return null;
 	}
 
@@ -96,7 +108,15 @@ public class MyTreeMap<K, V> implements Map<K, V> {
 
 	private boolean containsValueHelper(Node node, Object target) {
 		// TODO: FILL THIS IN!
-		return false;
+
+		if (equals(node.value, target))
+			return true; // 같으면 리턴
+		else {
+			if (containsValueHelper(node.left, target)) // 왼쪽
+				return true;
+			else
+				return containsValueHelper(node.right, target); // 오른쪽
+		}
 	}
 
 	@Override
@@ -118,10 +138,21 @@ public class MyTreeMap<K, V> implements Map<K, V> {
 		return size == 0;
 	}
 
+	private void keySetHelper(Node node, Set<K> set) {
+		if (node == null) // 가르키는 노드가 없을 때 리턴
+			return;
+
+		keySetHelper(node.left, set); // 왼쪽 호출
+		set.add(node.key); // 자신 추가
+		keySetHelper(node.right, set); // 오른쪽 호출
+	}
+
 	@Override
 	public Set<K> keySet() {
 		Set<K> set = new LinkedHashSet<K>();
 		// TODO: FILL THIS IN!
+		keySetHelper(root, set);
+
 		return set;
 	}
 
@@ -139,8 +170,29 @@ public class MyTreeMap<K, V> implements Map<K, V> {
 	}
 
 	private V putHelper(Node node, K key, V value) {
-		// TODO: FILL THIS IN!
-		return null;
+		@SuppressWarnings("unchecked")
+		Comparable<? super K> k = (Comparable<? super K>) key;
+
+		int compare = k.compareTo(node.key);
+
+		if (compare == 0) {
+			// 이미 있는 노드라면 대체하고 이전 값을 리턴한다.
+			V before = node.value;
+			node.value = value;
+			return before;
+		}else {
+			Node next = compare > 0 ? node.right : node.left;
+			if (next == null) {
+				// 다음 노드가 없다면 해당 노드에 새로 연결해준다.
+				if (compare > 0)
+					node.right = new Node(key, value);
+				else
+					node.left = new Node(key, value);
+				size++;
+				return null;
+			}
+			return putHelper(next, key, value);
+		}
 	}
 
 	@Override
@@ -153,7 +205,12 @@ public class MyTreeMap<K, V> implements Map<K, V> {
 	@Override
 	public V remove(Object key) {
 		// OPTIONAL TODO: FILL THIS IN!
-		throw new UnsupportedOperationException();
+		Node result = findNode(key);
+		if (result == null)
+			throw new UnsupportedOperationException();
+		else {
+			return result.value;
+		}
 	}
 
 	@Override
@@ -181,8 +238,12 @@ public class MyTreeMap<K, V> implements Map<K, V> {
 	 */
 	public static void main(String[] args) {
 		Map<String, Integer> map = new MyTreeMap<String, Integer>();
+		map.put("Word3", 3);
+		map.put("Word4", 4);
+		map.put("Word5", 5);
 		map.put("Word1", 1);
 		map.put("Word2", 2);
+		map.put("Word1", 99);
 		Integer value = map.get("Word1");
 		System.out.println(value);
 
