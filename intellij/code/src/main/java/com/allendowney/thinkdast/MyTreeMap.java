@@ -67,6 +67,7 @@ public class MyTreeMap<K, V> implements Map<K, V> {
 			throw new IllegalArgumentException();
 		}
 
+		// 컴파일러 경고 무시
 		// something to make the compiler happy
 		@SuppressWarnings("unchecked")
 		Comparable<? super K> k = (Comparable<? super K>) target;
@@ -109,14 +110,26 @@ public class MyTreeMap<K, V> implements Map<K, V> {
 	private boolean containsValueHelper(Node node, Object target) {
 		// TODO: FILL THIS IN!
 
+		// 리프 노드의 자식
+		// -> 즉, 한쪽 방향의 자식 노드들을 모두 확인하였지만 찾지 못하였으므로 false 리턴
+		if (node == null)
+			return false;
+
+		// 현재 노드의 값과 찾는 값이 일치할 경우 true!!!!
 		if (equals(node.value, target))
-			return true; // 같으면 리턴
-		else {
-			if (containsValueHelper(node.left, target)) // 왼쪽
-				return true;
-			else
-				return containsValueHelper(node.right, target); // 오른쪽
-		}
+			return true;
+
+		// 현재 노드까지 못찾았으므로 자식들을 검사한다.
+		// 왼쪽 자식 검사 -> 있다면 true
+		if (containsValueHelper(node.left, target))
+			return true;
+
+		// 오른쪽 자식 검사 -> 있다면 true
+		if (containsValueHelper(node.right, target))
+			return true;
+
+		// 자신이 null이 아니고 자식들을 다 검사했지만 모두 false 일때
+		return false;
 	}
 
 	@Override
@@ -205,12 +218,39 @@ public class MyTreeMap<K, V> implements Map<K, V> {
 	@Override
 	public V remove(Object key) {
 		// OPTIONAL TODO: FILL THIS IN!
-		Node result = findNode(key);
-		if (result == null)
-			throw new UnsupportedOperationException();
-		else {
-			return result.value;
+
+		// 컴파일러 경고 무시
+		// something to make the compiler happy
+		@SuppressWarnings("unchecked")
+		Comparable<? super K> k = (Comparable<? super K>) key;
+
+		Node cursor = root;
+		Node parent = null;
+		int direction = 0; // 0 : 왼쪽 / 1 : 오른쪽
+		while (cursor != null) {
+			int compare = k.compareTo(cursor.key);
+
+			if (compare == 0) { // 일치 할 경우
+				if (direction == 0)
+					parent.left = cursor.right;
+				else
+					parent.right = cursor.left;
+				return cursor.value;
+			} else {
+				// 계속 탐색
+				if (compare < 0) {
+					cursor = cursor.left;
+					direction = 0;
+				}else {
+					cursor = cursor.right;
+					direction = 1;
+				}
+				parent = cursor;
+			}
 		}
+
+		// 못 찾았다는거니깐 에러 던짐
+		throw new UnsupportedOperationException();
 	}
 
 	@Override
