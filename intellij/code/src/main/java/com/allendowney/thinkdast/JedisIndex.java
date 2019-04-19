@@ -77,8 +77,8 @@ public class JedisIndex {
 	 * @return Set of URLs.
 	 */
 	public Set<String> getURLs(String term) {
-        // FILL THIS IN!
-		return null;
+        // TODO : FILL THIS IN!
+		return jedis.smembers(urlSetKey(term));
 	}
 
     /**
@@ -88,8 +88,14 @@ public class JedisIndex {
 	 * @return Map from URL to count.
 	 */
 	public Map<String, Integer> getCounts(String term) {
-        // FILL THIS IN!
-		return null;
+        // TODO : sFILL THIS IN!
+
+		Map<String, Integer> countMap = new HashMap<>();
+		for (String url : getURLs(term)) { // 단어가 언급된 url 모두 가져옴
+			int count = getCount(url, term);
+			countMap.put(term, countMap.getOrDefault(term, 0) + count);
+		}
+		return countMap;
 	}
 
     /**
@@ -100,8 +106,8 @@ public class JedisIndex {
 	 * @return
 	 */
 	public Integer getCount(String url, String term) {
-        // FILL THIS IN!
-		return null;
+        // TODO : FILL THIS IN!
+		return Integer.valueOf(jedis.hget(termCounterKey(url), term));
 	}
 
 	/**
@@ -112,6 +118,18 @@ public class JedisIndex {
 	 */
 	public void indexPage(String url, Elements paragraphs) {
 		// TODO: FILL THIS IN!
+
+		// make a TermCounter and count the terms in the paragraphs
+		TermCounter counter = new TermCounter(url);
+		counter.processElements(paragraphs); // 단락에 있는 단어 셈
+
+		Transaction t = jedis.multi();
+		// for each term in the TermCounter, add the TermCounter to the index
+		for (String term : counter.keySet()) {
+			t.sadd(urlSetKey(term), url); // 단어가 나타난 url set 생성
+			t.hset(termCounterKey(url), term, String.valueOf(counter.get(term))); // url 내 단어별 counter 생성
+		}
+		t.exec();
 	}
 
 	/**
@@ -232,9 +250,9 @@ public class JedisIndex {
 		Jedis jedis = JedisMaker.make();
 		JedisIndex index = new JedisIndex(jedis);
 
-		//index.deleteTermCounters();
-		//index.deleteURLSets();
-		//index.deleteAllKeys();
+		index.deleteTermCounters();
+		index.deleteURLSets();
+		index.deleteAllKeys();
 		loadIndex(index);
 
 		Map<String, Integer> map = index.getCounts("the");

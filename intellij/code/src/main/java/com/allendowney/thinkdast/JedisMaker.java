@@ -110,14 +110,27 @@ public class JedisMaker {
 	    System.out.println("Got value: " + value);
 
 	    // Set
+		/**
+		 * jedis.sadd() : set이 존재하지 않으면 레디스가 생성해줌
+		 * jedis.sismember() : 요소가 set에 있는지 검사 / 요소 추가 & 멤버 확인 : 상수시간연산
+		 */
 	    jedis.sadd("myset", "element1", "element2", "element3");
 	    System.out.println("element2 is member: " + jedis.sismember("myset", "element2"));
 
 	    // List
+		/**
+		 * jedis.rpush() : list의 끝(오른쪽)에 요소 추가
+		 * jedis.lindex() : list의 지정된 요소를 반환 / 요소 추가 & 접근 : 상수 시간
+		 */
 	    jedis.rpush("mylist", "element1", "element2", "element3");
 	    System.out.println("element at index 1: " + jedis.lindex("mylist", 1));
 
 	    // Hash
+		/** 모두 상수시간
+		 * jedis.hset() : hash에 새로운 엔트리 추가 (hash 식별 키, hash 안 식별키, value)
+		 * jedis.hget() : 값 조회 (key, value) 모두 String이 default
+		 * jedis.hincrBy() : 특정 필드의 값을 증가(아래의 경우 1추가)
+		 */
 	    jedis.hset("myhash", "word1", Integer.toString(2));
 	    jedis.hincrBy("myhash", "word2", 1);
 	    System.out.println("frequency of word1: " + jedis.hget("myhash", "word1"));

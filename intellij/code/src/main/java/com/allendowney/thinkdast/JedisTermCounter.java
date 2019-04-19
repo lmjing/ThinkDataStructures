@@ -16,7 +16,7 @@ import redis.clients.jedis.Transaction;
  *
  */
 public class JedisTermCounter extends TermCounter {
-	
+
 	public JedisTermCounter(String label) {
 		super(label);
 	}
