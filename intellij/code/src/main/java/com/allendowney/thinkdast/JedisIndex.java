@@ -88,12 +88,12 @@ public class JedisIndex {
 	 * @return Map from URL to count.
 	 */
 	public Map<String, Integer> getCounts(String term) {
-        // TODO : sFILL THIS IN!
-
+        // TODO : FILL THIS IN!
+		// map 생성
 		Map<String, Integer> countMap = new HashMap<>();
 		for (String url : getURLs(term)) { // 단어가 언급된 url 모두 가져옴
 			int count = getCount(url, term);
-			countMap.put(term, countMap.getOrDefault(term, 0) + count);
+			countMap.put(url, count); // url 별 term의 count 담음
 		}
 		return countMap;
 	}
@@ -118,16 +118,22 @@ public class JedisIndex {
 	 */
 	public void indexPage(String url, Elements paragraphs) {
 		// TODO: FILL THIS IN!
-
-		// make a TermCounter and count the terms in the paragraphs
-		TermCounter counter = new TermCounter(url);
+		// 1. TermCounter 객체를 생성해 단락에 있는 단어의 개수를 셈
+		JedisTermCounter counter = new JedisTermCounter(url);
 		counter.processElements(paragraphs); // 단락에 있는 단어 셈
 
-		Transaction t = jedis.multi();
-		// for each term in the TermCounter, add the TermCounter to the index
+		// 2. TermCounter 내용을 redis에 push
+		Transaction t = jedis.multi(); // Transaction 객체에 연산들을 모아서 한꺼번에 서버로 보냄
+		String hashName = termCounterKey(url);
+		// 이미 인덱싱 되어있다면 없애준다.
+		t.del(hashName);
+
+		// 각 검색어에 대해 TermCounter에 엔트리와 인덱스의 새 멤버를 추가
 		for (String term : counter.keySet()) {
-			t.sadd(urlSetKey(term), url); // 단어가 나타난 url set 생성
-			t.hset(termCounterKey(url), term, String.valueOf(counter.get(term))); // url 내 단어별 counter 생성
+			//a. url 내 단어별 counter 생성
+			t.hset(hashName, term, counter.get(term).toString());
+			//b. 단어가 나타난 url set 생성
+			t.sadd(urlSetKey(term), url);
 		}
 		t.exec();
 	}
