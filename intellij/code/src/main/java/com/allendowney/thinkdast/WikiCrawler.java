@@ -69,7 +69,7 @@ public class WikiCrawler {
 		// 메서드를 호출하여 페이지의 내용을 읽음
 		Elements paragraphs = wf.fetchWikipedia(url);
 
-		// 원래 코드
+		// 원래 코드 - 내부 코드에서 에러 발생(readWikipedia)
 //		Elements paragraphs;
 //		if (testing) {
 //			paragraphs = wf.readWikipedia(url); // 파일에서 읽음
@@ -105,6 +105,7 @@ public class WikiCrawler {
 		for (Element el : relURLs) {
 			String relURL = el.attr("href");
 
+			// link가 내부인지 확인하기 위한 용도 - 특징 '/wiki/'로 시작
 			if (relURL.startsWith("/wiki/")) {
 				String absURL = el.attr("abs:href");
 				queue.offer(absURL);
