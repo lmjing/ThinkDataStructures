@@ -6,6 +6,8 @@
       <module name="code.test" target="1.8" />
       <module name="code_main" target="1.8" />
       <module name="code_test" target="1.8" />
+      <module name="intellij-code_main" target="1.8" />
+      <module name="intellij-code_test" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
